@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Register.css"; // Asegúrate de importar el archivo CSS
+import BASE_URL from "../services/apiConfig";
 
 const Register = () => {
     const [nombre, setNombre] = useState("");
@@ -14,7 +15,7 @@ const Register = () => {
         setMensaje("");
 
         try {
-            const response = await fetch("http://localhost:3001/api/auth/register", {
+            const response = await fetch(BASE_URL + "/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

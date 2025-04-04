@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ReservasPage.css"; // Importar los estilos
+import BASE_URL from "../services/apiConfig";
 
 const ReservaPage = () => {
     const [nombre, setNombre] = useState("");
@@ -19,7 +20,7 @@ const ReservaPage = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:3001/api/reservas/usuario/${usuario.id}`, {
+            const response = await fetch(`${BASE_URL}/api/reservas/usuario/${usuario.id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
 
@@ -46,7 +47,7 @@ const ReservaPage = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/api/reservas/crear", {
+            const response = await fetch(BASE_URL+"/api/reservas/crear", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,7 +76,7 @@ const ReservaPage = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3001/api/reservas/cancelar/${reservaId}`, {
+            const response = await fetch(`${BASE_URL}/api/reservas/cancelar/${reservaId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

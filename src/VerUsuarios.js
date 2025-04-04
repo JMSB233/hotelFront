@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BASE_URL from './services/apiConfig';
 
 function VerUsuarios() {
     const [usuarios,setUsuarios] = useState([])
@@ -6,7 +7,7 @@ function VerUsuarios() {
     const handleSubmit= async(e) =>{
         e.preventDefault();
         try{
-            const response= await fetch("http://localhost:3001/verUsuarios",{
+            const response= await fetch(BASE_URL + "/verUsuarios",{
                 method:"GET",
                 headers:{"Content-Type":"application/json"}
             });

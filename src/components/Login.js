@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate
 import "./Login.css"; // Asegúrate de tener un archivo de estilos
+import BASE_URL from "../services/apiConfig";
 
 const Login = ({ setIsAuthenticated }) => {
     const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const Login = ({ setIsAuthenticated }) => {
         setError("");
     
         try {
-            const response = await fetch("http://localhost:3001/api/auth/login", {
+            const response = await fetch(BASE_URL + "/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ correo: email, contraseña: password }),

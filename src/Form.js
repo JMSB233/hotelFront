@@ -1,4 +1,5 @@
 import {useState} from "react";
+import BASE_URL from './services/apiConfig';
 
 function Form(){
     const [FormData,setFormData] = useState(  //Variable de estado, que rastrea que valores cambian
@@ -19,7 +20,7 @@ function Form(){
 
     const handleSubmit= async(e) =>{
         e.preventDefault();
-        const response= await fetch("http://localhost:3001/registerUser",{
+        const response= await fetch(BASE_URL + "/registerUser",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(FormData)
